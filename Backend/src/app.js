@@ -6,7 +6,12 @@ const app = express();
 
 app.use(express.json()); //MiddleWare
 
-app.use(cors({ origin: "http://localhost:5173" }));
+app.use(cors({
+  origin: [
+    "http://localhost:5173",
+    "https://todo-list-nine-amber-67.vercel.app"  // ← add karo
+  ]
+}));
 
 //Task-Post Method
 
