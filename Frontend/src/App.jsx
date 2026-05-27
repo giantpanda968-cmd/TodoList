@@ -6,6 +6,8 @@ import { useState } from "react";
 import axios from "axios";
 import { useEffect } from "react";
 
+const BASE_URL = "https://todolist-backend-rvaq.onrender.com";
+
 const App = () => {
   const [title, setTitle] = useState("");
   const [task, setTask] = useState([]);
@@ -17,14 +19,14 @@ const App = () => {
     if (title.trim() === "") {
       alert("⚠️ Your Task is Empty");
     } else {
-      await axios.post("http://localhost:3000/task", { title });
+      await axios.post(`${BASE_URL}/task`, { title });
       await response();
 
       setTitle("");
     }
   };
   const response = async () => {
-    const res = await axios.get("http://localhost:3000/task");
+    const res = await axios.get(`${BASE_URL}/task`);
 
     setTask(res.data.task);
   };
@@ -33,12 +35,12 @@ const App = () => {
   }, []);
 
   const clearAlltask = async () => {
-    await axios.delete("http://localhost:3000/task");
+    await axios.delete(`${BASE_URL}/task`);
     await response();
   };
 
   const deletetask = async (idx) => {
-    await axios.delete(`http://localhost:3000/task/${idx}`);
+    await axios.delete(`${BASE_URL}/task/${idx}`);
     await response();
   };
 
