@@ -1,5 +1,4 @@
 const express = require("express");
-const taskModel = require("./models/task.model");
 const cors = require("cors");
 const taskRoutes = require("./routes/task.routes");
 
