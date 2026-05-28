@@ -19,14 +19,14 @@ const App = () => {
     if (title.trim() === "") {
       alert("⚠️ Your Task is Empty");
     } else {
-      await axios.post(`${BASE_URL}/task`, { title });
+      await axios.post(`${BASE_URL}/api/task`, { title });
       await response();
 
       setTitle("");
     }
   };
   const response = async () => {
-    const res = await axios.get(`${BASE_URL}/task`);
+    const res = await axios.get(`${BASE_URL}/api/task`);
 
     setTask(res.data.task);
   };
@@ -35,12 +35,12 @@ const App = () => {
   }, []);
 
   const clearAlltask = async () => {
-    await axios.delete(`${BASE_URL}/task`);
+    await axios.delete(`${BASE_URL}/api/task`);
     await response();
   };
 
   const deletetask = async (idx) => {
-    await axios.delete(`${BASE_URL}/task/${idx}`);
+    await axios.delete(`${BASE_URL}/api/task/${idx}`);
     await response();
   };
 
